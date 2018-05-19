@@ -17,7 +17,7 @@ public class Monitor {
         Observable<StockInfo> feed = StockServer.getFeed(securities);
         System.out.println("Got Observable");
 
-        feed.subscribe(stockInfo -> System.out.println(stockInfo));
+        feed.subscribe(System.out::println);
 
     }
 
