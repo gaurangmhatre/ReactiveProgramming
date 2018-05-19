@@ -17,12 +17,7 @@ public class Monitor {
         Observable<StockInfo> feed = StockServer.getFeed(securities);
         System.out.println("Got Observable");
 
-        feed.subscribe(new Action1<StockInfo>() {
-            @Override
-            public void call(StockInfo stockInfo) {
-                System.out.println(stockInfo);
-            }
-        });
+        feed.subscribe(stockInfo -> System.out.println(stockInfo));
 
     }
 

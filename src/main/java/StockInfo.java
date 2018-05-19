@@ -8,7 +8,7 @@ public class StockInfo {
     }
 
     public String toString(){
-        return String.format("Symbol : %s, Price : %d",this.ticker,this.price);
+        return String.format("Symbol : "+this.ticker+", Price : "+this.price);
     }
 }
 

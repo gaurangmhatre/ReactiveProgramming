@@ -10,10 +10,18 @@ public class StockServer {
     private static void processRequest(Subscriber<? super StockInfo> subscriber, List<String> securities) {
         System.out.println("Processing...");
 
-        while(true){
+        /*while(true){
             for (String security: securities){
                 subscriber.onNext(StockFeatcher.fetch(security));
             }
+        }*/
+
+        //optimized
+        while(true) {
+            securities.stream()
+                    .map(StockFeatcher::fetch)
+                    .forEach(subscriber::onNext);
         }
+
     }
 }
