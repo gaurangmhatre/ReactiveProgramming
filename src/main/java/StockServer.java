@@ -17,11 +17,15 @@ public class StockServer {
         }*/
 
         //optimized
-        while(true) {
+        while(!subscriber.isUnsubscribed()) {
             securities.stream()
                     .map(StockFeatcher::fetch)
+                    .filter(data -> !subscriber.isUnsubscribed())
                     .forEach(subscriber::onNext);
         }
+
+        //subscriber.onCompleted();
+        //subscriber.onNext(new StockInfo("blah",0.0));
 
     }
 }
